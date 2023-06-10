@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: Researcher at <a href='https://deepness-lab.org/'>DEEPNESS-Lab</a> | Software Engineer @ CyberArk
 
 profile:
   align: right
@@ -18,8 +18,8 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Hello, I'm Daniel Alfasi, currently pursuing my MSc in computer science at Reichman University. I am working on my thesis under the supervision of Prof. Anat Bremler-Barr (Tel Aviv University) and Ph.D. Tal Shapira (Reichman University). My interests revolve around cybersecurity, data science, and cloud security, all of which I am deeply passionate about.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+My research focuses on vulnerability management, specifically on mining Common Vulnerabilities and Exposures (CVEs) and establishing connections and reasoning among various security entities. To achieve these goals, I employ representation learning techniques applied to knowledge graphs and utilize Natural Language Processing (NLP) techniques.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Feel free to reach out to me if you want to discuss my research, have any questions, or are interested in collaborating.
