@@ -16,7 +16,7 @@ footer_text: >
 keywords: data science, nlp, knowledge graph, representation learning  # add your own keywords or leave empty
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: ⚛️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: :surfer:  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://daniel4x.github.io # the base hostname & protocol for your site
 baseurl: /al-folio # the subpath of your site, e.g. /blog/
