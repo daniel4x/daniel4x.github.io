@@ -28,63 +28,63 @@
         - "GPA:" 90
         - Completed the cybersecurity track as part of the Cyber Innovation Center.
 
-- title: Experience
-  type: time_table
-  contents:
-    - title: Researcher
-      institution: DEEPNESS-lab
-      year: 2022-toray
-      description:
-        - "Thesis research topic:" Security entities linkage and reasoning using knowledge graphs.
-        - "Research areas include:" deep learning, knowledge graph, representation learning and language models.
-    - title: Software Engineer
-      institution: CyberArk, IL
-      year: 2021-today
-      description:
-        - Algorithm Architect and Developer for internal attacker detection within organization
-        - Secure cloud deployments in AWS using CDK
-        - Design and execute scalability benchmarks for processing up to 2 million syslogs per second
-        - DevOps and Security duties, including deployment and monitoring tool management
+# - title: Experience
+#   type: time_table
+#   contents:
+#     - title: Researcher
+#       institution: DEEPNESS-lab
+#       year: 2022-toray
+#       description:
+#         - "Thesis research topic:" Security entities linkage and reasoning using knowledge graphs.
+#         - "Research areas include:" deep learning, knowledge graph, representation learning and language models.
+#     - title: Software Engineer
+#       institution: CyberArk, IL
+#       year: 2021-today
+#       description:
+#         - Algorithm Architect and Developer for internal attacker detection within organization
+#         - Secure cloud deployments in AWS using CDK
+#         - Design and execute scalability benchmarks for processing up to 2 million syslogs per second
+#         - DevOps and Security duties, including deployment and monitoring tool management
 
-    - title: Researcher
-      institution: Surecomp - Innovation Lab
-      year: 2019-2020
-      description:
-        - Conducting thorough examination and research of novel technologies and ideas proposed by the team
-        - Taking charge of a machine learning initiative aimed at evaluating the company's data, identifying instances of fraud, and generating forecasts
-        - Design and execute scalability benchmarks for processing up to 2 million syslogs per second
-        - Won the company hackathon
+#     - title: Researcher
+#       institution: Surecomp - Innovation Lab
+#       year: 2019-2020
+#       description:
+#         - Conducting thorough examination and research of novel technologies and ideas proposed by the team
+#         - Taking charge of a machine learning initiative aimed at evaluating the company's data, identifying instances of fraud, and generating forecasts
+#         - Design and execute scalability benchmarks for processing up to 2 million syslogs per second
+#         - Won the company hackathon
 
-    - title: Software Engineer
-      institution: Illusive Networks (Team8 company)
-      year: 2018-2019
+#     - title: Software Engineer
+#       institution: Illusive Networks (Team8 company)
+#       year: 2018-2019
 
-    - title: Software Engineer
-      institution: Perfecto Mobile (acquired by Perforce)
-      year: 2016-2018
+#     - title: Software Engineer
+#       institution: Perfecto Mobile (acquired by Perforce)
+#       year: 2016-2018
 
 
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 2016
-      items: 
-        - Dean's List
+# - title: Honors and Awards
+#   type: time_table
+#   contents:
+#     - year: 2016
+#       items: 
+#         - Dean's List
 
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Representation Learning
-      items: 
-        - Deep learning with graph, knowledge graph embedding
-        - Language models for semantic search
-    - title: Natural language processing
-    - title: Cyber Security
-      items:
-        - Common vulnerability and exposure (CVE)
-        - Cloud Security
+# - title: Academic Interests
+#   type: nested_list
+#   contents:
+#     - title: Representation Learning
+#       items: 
+#         - Deep learning with graph, knowledge graph embedding
+#         - Language models for semantic search
+#     - title: Natural language processing
+#     - title: Cyber Security
+#       items:
+#         - Common vulnerability and exposure (CVE)
+#         - Cloud Security
 
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Surfing and running.
+# - title: Other Interests
+#   type: list
+#   contents:
+#     - <u>Hobbies:</u> Surfing and running.
