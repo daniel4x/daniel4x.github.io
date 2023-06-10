@@ -14,12 +14,13 @@
       year: 2023
       description:
         - Currently working on my thesis in the field of vulnerability management, CVE mining and reasoning between security entities.
-        - Part of "DEEPNESS-lab".
+        - Part of DEEPNESS-lab.
         - "Total GPA:" 92.37 (Completed all courses)
+      expertise: 
         - title: Expertise
           contents:
-            - Deep Learning with Knowledge Graphs, knowledge graph embedding, node2vec and classic algorithms.
-            - NLP, utilizing language model to complete variaty of tasks.
+            - Deep Learning with Knowledge Graphs, knowledge graph embedding, node2vec, and classic algorithms.
+            - NLP, utilizing a language model to complete a variety of tasks.
     - title: BSc
       institution: Ariel University, Ariel, Israel
       year: 2015-1017
