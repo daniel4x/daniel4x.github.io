@@ -10,8 +10,7 @@ profile:
   image_circular: false # crops the image to make it circular
   address: >
     <p>Reichman University</p>
-    # <p>123 your address street</p>
-    <p>Herzliya, Tel Aviv Distric, Israel.</p>
+    <p>Herzliya, Israel.</p>
 
 news: true  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts
