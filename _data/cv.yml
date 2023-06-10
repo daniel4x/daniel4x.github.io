@@ -2,96 +2,88 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
+      value: Daniel Alfasi
     - name: Languages
-      value: English, German
+      value: English, Hebrew
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: MSc
+      institution: Reichman University, Herzliya, Israel
+      year: 2023
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
+        - Currently working on my thesis in the field of vulnerability management, CVE mining and reasoning between security entities.
+        - Part of DEEPNESS-lab.
+        - "Total GPA:" 92.37 (Completed all courses)
+        - title: Expertise
           contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+            - Deep Learning with Knowledge Graphs, knowledge graph embedding, node2vec and classic algorithms.
+            - NLP, utilizing language model to complete variaty of tasks.
+    - title: BSc
+      institution: Ariel University, Ariel, Israel
+      year: 2015-1017
       description:
-        - Description 1.
-        - Description 2.
+        - "GPA:" 90
+        - Completed the cybersecurity track as part of the Cyber Innovation Center.
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Researcher
+      institution: DEEPNESS-lab
+      year: 2022-toray
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - "Thesis research topic:" Security entities linkage and reasoning using knowledge graphs.
+        - "Research areas include:" deep learning, knowledge graph, representation learning and language models.
+    - title: Software Engineer
+      institution: CyberArk, IL
+      year: 2021-today
       description:
-        - Description 1.
-        - Description 2.
+        - Algorithm Architect and Developer for internal attacker detection within organization
+        - Secure cloud deployments in AWS using CDK
+        - Design and execute scalability benchmarks for processing up to 2 million syslogs per second
+        - DevOps and Security duties, including deployment and monitoring tool management
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
+    - title: Researcher
+      institution: Surecomp - Innovation Lab
+      year: 2019-2020
       description:
+        - Conducting thorough examination and research of novel technologies and ideas proposed by the team
+        - Taking charge of a machine learning initiative aimed at evaluating the company's data, identifying instances of fraud, and generating forecasts
+        - Design and execute scalability benchmarks for processing up to 2 million syslogs per second
+        - Won the company hackathon
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+    - title: Software Engineer
+      institution: Illusive Networks (Team8 company)
+      year: 2018-2019
 
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: Software Engineer
+      institution: Perfecto Mobile (acquired by Perforce)
+      year: 2016-2018
+
 
 - title: Honors and Awards
   type: time_table
   contents:
-    - year: 1921
+    - year: 2016
       items: 
-        - Nobel Prize in Physics 
-        - Matteucci Medal
-    - year: 2029
-      items: 
-        - Max Planck Medal
+        - Dean's List
 
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Topic 1.
+    - title: Representation Learning
       items: 
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
+        - Deep learning with graph, knowledge graph embedding
+        - Language models for semantic search
+    - title: Natural language processing
+    - title: Cyber Security
       items:
-        - Description 1.
-        - Description 2.
+        - Common vulnerability and exposure (CVE)
+        - Cloud Security
 
 - title: Other Interests
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - <u>Hobbies:</u> Surfing and running.
