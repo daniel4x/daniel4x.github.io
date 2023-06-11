@@ -15,7 +15,7 @@
       description:
         - Currently working on my thesis in the field of vulnerability management, CVE mining and reasoning between security entities.
         - Part of DEEPNESS-lab.
-        - Total GPA: 92.37 (Completed all courses)
+        - "GPA: 92.37 (Completed all courses)"
       expertise: 
         - title: Expertise
           contents:
@@ -25,7 +25,7 @@
       institution: Ariel University, Ariel, Israel
       year: 2015-1017
       description:
-        - GPA: 90
+        - "GPA: 90"
         - Completed the cybersecurity track as part of the Cyber Innovation Center.
 
 - title: Experience
@@ -35,8 +35,8 @@
       institution: DEEPNESS-lab
       year: 2022-toray
       description:
-        - Thesis research topic: Security entities linkage and reasoning using knowledge graphs.
-        - Research areas include: deep learning, knowledge graph, representation learning and language models.
+        - "Thesis research topic: Security entities linkage and reasoning using knowledge graphs."
+        - "Research areas include: deep learning, knowledge graph, representation learning and language models."
     - title: Software Engineer
       institution: CyberArk, IL
       year: 2021-today
