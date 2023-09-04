@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Researcher at <a href='https://deepness-lab.org/'>DEEPNESS-Lab</a> | Software Engineer @ CyberArk
+subtitle: Researcher at <a href='https://deepness-lab.org/'>DEEPNESS-Lab</a> | Data Scientist @ CyberArk
 
 profile:
   align: right
