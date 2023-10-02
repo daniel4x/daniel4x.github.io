@@ -7,7 +7,9 @@ related_posts: false
 ---
 
 🚀 Vulnerability Scoping Made Easy
+
 ***
+
 The discovery and analysis of vulnerabilities often feel like a race against time.
 The recent disclosure of CVE-2023-4863 in "libwebp" had security teams worldwide working around the clock to identify all impacted products.
 
