@@ -16,4 +16,5 @@ The recent disclosure of CVE-2023-4863 in "libwebp" had security teams worldwide
 In our latest Medium article Tal Shapira, Anat Bremler-Barr, and I redefine the scope of the "libwebp" vulnerability. 
 We reveal previously unrecognized affected products using LLMs and knowledge graph representation learning.
 
-Link to our Medium article: https://medium.com/@daniel4x/redefining-libwebp-vulnerability-scoping-with-llms-and-knowledge-graphs-3f4aa2069ffc 
+
+Link to our Medium article: [Redefining “libwebp” Vulnerability Scoping with LLMs and Knowledge Graphs](https://medium.com/@daniel4x/redefining-libwebp-vulnerability-scoping-with-llms-and-knowledge-graphs-3f4aa2069ffc)
