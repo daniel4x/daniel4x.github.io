@@ -11,16 +11,18 @@
   contents:
     - title: MSc
       institution: Reichman University, Herzliya, Israel
-      year: 2023
+      year: 2020-2023
       description:
-        - Currently working on my thesis in the field of vulnerability management, CVE mining and reasoning between security entities.
+        - Working on a thesis in the field of vulnerability management and security entities linkage.
+        - Utilizing knowledge graph reasoning, representation learning, and language models.
         - Part of DEEPNESS-lab.
         - "GPA: 92.37 (Completed all courses)"
       expertise: 
         - title: Expertise
           contents:
-            - Deep Learning with Knowledge Graphs, knowledge graph embedding, node2vec, and classic algorithms.
-            - NLP, utilizing a language model to complete a variety of tasks.
+            - Deep learning 
+            - Knowledge graph reasoning, GNNs
+            - Language Models, LLMs
     - title: BSc
       institution: Ariel University, Ariel, Israel
       year: 2015-1017
@@ -33,32 +35,34 @@
   contents:
     - title: Researcher
       institution: DEEPNESS-lab
-      year: 2022-toray
+      year: 2022-Today
       description:
         - "Thesis research topic: Security entities linkage and reasoning using knowledge graphs."
-        - "Research areas include: deep learning, knowledge graph, representation learning and language models."
+    - title: Data Scientist
+      institution: CyberArk, IL
+      year: 2023-Today
+      description:
+        - Designing various machine learning models for security use cases
+        - Anomaly detection, classification, and clustering
+        - Data-centric AI
     - title: Software Engineer
       institution: CyberArk, IL
-      year: 2021-today
+      year: 2021-2023
       description:
-        - Algorithm Architect and Developer for internal attacker detection within organization
+        - Architected and developed algorithm for attacks detection
         - Secure cloud deployments in AWS using CDK
-        - Design and execute scalability benchmarks for processing up to 2 million syslogs per second
+        - Designed and executed scalability benchmarks for processing up to 2 million syslogs per second
         - DevOps and Security duties, including deployment and monitoring tool management
-
     - title: Researcher
       institution: Surecomp - Innovation Lab
       year: 2019-2020
       description:
-        - Conducting thorough examination and research of novel technologies and ideas proposed by the team
-        - Taking charge of a machine learning initiative aimed at evaluating the company's data, identifying instances of fraud, and generating forecasts
-        - Design and execute scalability benchmarks for processing up to 2 million syslogs per second
-        - Won the company hackathon
-
+        - Conducted thorough examination and research of novel technologies and ideas proposed by the team
+        - Designed and implemented ML models for fraud detection in trade finance
+        - Won the company's hackathon
     - title: Software Engineer
       institution: Illusive Networks (Team8 company)
       year: 2018-2019
-
     - title: Software Engineer
       institution: Perfecto Mobile (acquired by Perforce)
       year: 2016-2018
