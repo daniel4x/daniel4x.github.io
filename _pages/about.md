@@ -18,8 +18,6 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Hello, I'm Daniel Alfasi, currently pursuing my MSc in computer science at <a href='https://www.runi.ac.il/en/schools/computer-science/'>Reichman University</a>. I am working on my thesis under the supervision of <a href='https://deepness-lab.org/prof-anat-bremler-barr/'>Prof. Anat Bremler-Barr</a> (Tel Aviv University) and <a href='https://talshapira.github.io/'>Ph.D. Tal Shapira</a> (Reichman University). My interests revolve around cybersecurity, data science, and cloud security, all of which I am deeply passionate about.
-
-My research focuses on vulnerability management, specifically on mining Common Vulnerabilities and Exposures (CVEs) and establishing connections and reasoning among various security entities. To achieve these goals, I employ representation learning techniques applied to knowledge graphs and utilize Natural Language Processing (NLP) techniques.
+Hello, I'm Daniel Alfasi, a Data Scientist at CyberArk and a researcher at <a href='https://deepness-lab.org/'>DEEPNESS-Lab</a>. My interests revolve around solving real-world problems in cybersecurity using deep-learning methods. In addition, I'm interested in Knowledge graph reasoning, NLP methods, and generative AI.
 
 Feel free to reach out to me if you want to discuss my research, have any questions, or are interested in collaborating.
