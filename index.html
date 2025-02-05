@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Alfasi - AI Researcher</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f8f9fa;
+            --text-color: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: rgb(251, 251, 251);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 2rem;
+            position: relative;
+            border-left: 2px solid var(--secondary-color);
+            margin-left: 20px;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -11px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        .timeline-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .publication {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .publication:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .publication h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .publication a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .publication a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            .timeline-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .timeline-image {
+                width: 150px;
+                height: 150px;
+                align-self: center;
+            }
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            border: 3px solid var(--secondary-color);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .floating-scroll-arrow {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .floating-scroll-arrow button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+            color: var(--secondary-color);
+        }
+
+        .floating-scroll-arrow button:hover {
+            transform: translateY(5px);
+        }
+
+        .floating-scroll-arrow i {
+            font-size: 2rem;
+        }
+
+        .project-tech {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-tech span {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header id="profile">
+        <div class="container">
+            <img src="assets/me.jpg" alt="Daniel Alfasi" class="profile-image">
+            <h1>Daniel Alfasi</h1>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/daniel-alfasi/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/daniel4x" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://medium.com/@daniel4x" target="_blank"><i class="fab fa-medium"></i></a>
+                <a href="https://x.com/DanielAlfasi2" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="intro">
+                I'm an AI researcher, motivated by solving real-life cybersecurity problems 🤖 🔒 💡
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <img src="assets/stealth.png" alt="TBD Company" class="timeline-image">
+                    <div class="timeline-content">
+                        <h3>AI Researcher</h3>
+                        <p>TBD • 2025 - Present</p>
+                        <p>Starting a new adventure 🚀</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <img src="assets/cyberark.png" alt="CyberArk" class="timeline-image">
+                    <div class="timeline-content">
+                        <h3>Data Scientist</h3>
+                        <p>CyberArk • 2022 - 2025</p>
+                        <p>Worked on various cybersecurity (attack detection) projects. Developed anomaly detection models for low/high rate attacks. Researched solutions for modeling user behavior and user-assets interactions using Graph Neural Networks (GNNs) and Natural Language Processing (NLP).</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <img src="assets/cyberark.png" alt="CyberArk" class="timeline-image">
+                    <div class="timeline-content">
+                        <h3>Software Engineer</h3>
+                        <p>CyberArk • 2020 - 2022</p>
+                        <p>Worked on a large-scale detection system for privileged users. Designed and developed data-driven architecture over AWS Lambdas.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <img src="assets/surecomp.png" alt="Surecomp" class="timeline-image">
+                    <div class="timeline-content">
+                        <h3>Researcher</h3>
+                        <p>Surecomp Innovation Lab • 2019 - 2020</p>
+                        <p>Conducted multidisciplinary research on emerging development technologies. Focused on securing client transactions, mutual authentication between endpoints, and developed POCs for fraud detection, KYC, and transaction security.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <img src="assets/illusive.png" alt="Illusive Networks" class="timeline-image">
+                    <div class="timeline-content">
+                        <h3>Software Engineer</h3>
+                        <p>Illusive Networks (acquired by Proofpoint) • 2018 - 2019</p>
+                        <p>First cybersecurity role in the industry. Worked on discovery of organizational assets (crown jewels), shadow admins, and securing organizational attack surface.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <img src="assets/perfecto_mobile_logo.jpeg" alt="Perfecto" class="timeline-image">
+                    <div class="timeline-content">
+                        <h3>Software Engineer</h3>
+                        <p>Perfecto (acquired by Perforce) • 2016 - 2018</p>
+                        <p>Worked on SaaS platform over AWS.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <img src="assets/reichman_uni.png" alt="Reichman University" class="timeline-image">
+                    <div class="timeline-content">
+                        <h3>M.Sc. in Computer Science</h3>
+                        <p>Reichman University • 2020 - 2023</p>
+                        <p>Thesis: Detecting links between security entities (CVEs, CPEs, and CWEs) Using Graph Neural Networks (GNNs) and Natural Language Processing (NLP).<br>
+                        Supervisors: P.hD. Tal Shapira and Prof. Anat Bremler-Barr<br>
+                        Research conducted at DEEPNESS lab of Tel-Aviv University</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <img src="assets/ariel_uni.jpeg" alt="Ariel University" class="timeline-image">
+                    <div class="timeline-content">
+                        <h3>B.Sc. in Computer Science</h3>
+                        <p>Ariel University • 2015 - 2017</p>
+                        <p>Specialized coursework in cryptography, probability theory, and cybersecurity labs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="other-activities">
+            <h2>Other Activities</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <img src="assets/momentum_startup_accelerator_logo.jpeg" alt="Momentum Start-Up Accelerator" class="timeline-image">
+                    <div class="timeline-content">
+                        <h3>Momentum Start-Up Accelerator</h3>
+                        <p>Reichman University • 2020 - Present</p>
+                        <p>An active member of Momentum, Reichman University's startup accelerator, which is part of Israel's leading university for entrepreneurship.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            <div class="publication">
+                <h3>
+                    <a href="https://dl.acm.org/doi/10.1145/3694811.3697819" target="_blank">
+                        VulnScopper: Unveiling Hidden Links Between Unseen Security Entities
+                    </a>
+                </h3>
+                <p>Authors: Daniel Alfasi, Tal Shapira, and Anat Bremler-Barr</p>
+                <b>GNNet Workshop @ CoNEXT 2024</b>
+                <p>Inductive Link Prediction in cybersecurity Knowledge Graph Using ULTRA (Galkin et al.) and Large Language Models (LLMs).</p>
+            </div>
+            <div class="publication">
+                <h3>
+                    <a href="https://dl.acm.org/doi/10.1145/3579370.3594759" target="_blank">
+                        (Poster) Next-Generation Security Entity Linkage: Harnessing the Power of Knowledge Graphs and Large Language
+                    </a>
+                </h3>
+                <p>Authors: Daniel Alfasi, Tal Shapira, and Anat Bremler-Barr</p>
+                <b>SYSTOR '23</b>
+                <p>Transductive Link Prediction in cybersecurity Knowledge Graph Using Graph Neural Networks (RotatE) and Large Language Models (LLMs).</p>
+            </div>
+        </section>
+
+        <section id="featured-writing">
+            <h2>Featured Writing</h2>
+            <div class="publication">
+                <h3>
+                    <a href="https://medium.com/@daniel4x/towards-a-multi-modal-graph-and-language-foundation-model-787346868f94" target="_blank">
+                        Towards a Multi-Modal Graph and Language Foundation Model
+                    </a>
+                </h3>
+                <p>Medium • 2024</p>
+                <p>Technical details on how we integrated GNN with LLM to enrich entity-level features for a link prediction task.</p>
+            </div>
+            <div class="publication">
+                <h3>
+                    <a href="https://medium.com/@daniel4x/redefining-libwebp-vulnerability-scoping-with-llms-and-knowledge-graphs-3f4aa2069ffc" target="_blank">
+                        Redefining "libwebp" Vulnerability Scoping with LLMs and Knowledge Graphs
+                    </a>
+                </h3>
+                <p>Medium • 2023</p>
+                <p>Exploring new ways to understand the scope of vulnerabilities using LLMs and Knowledge Graphs. Specifically, discovering new vulnerable products that haven't been reported yet.</p>
+            </div>
+        </section>
+
+        <section id="featured-projects">
+            <h2>Featured Projects</h2>
+            <div class="publication">
+                <h3>
+                    <a href="https://github.com/daniel4x/GoGrad" target="_blank">
+                        GoGrad
+                    </a>
+                </h3>
+                <p>This project is an educational project for implementing computational graphs in Golang, inspired by the <a href="https://github.com/karpathy/nn-zero-to-hero" target="_blank">nn-zero-to-hero</a> by Andrej Karpathy.</p>
+                <div class="project-tech">
+                    <span>Go</span>
+                </div>
+            </div>
+            <div class="publication">
+                <h3>
+                    <a href="#" target="_blank">
+                        ULTRA-LM
+                    </a>
+                </h3>
+                <p>This project extends the <a href="https://github.com/DeepGraphLearning/ULTRA" target="_blank">ULTRA</a> (Unified, Learnable, and Transferable Representations for Knowledge Graphs) framework by integrating Language Models (LMs) to enrich entity-level features.</p>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>PyTorch</span>
+                    <span>PyG</span>
+                    <span>GNNs</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="floating-scroll-arrow">
+        <button onclick="scrollToNext()">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+    </div>
+
+    <script>
+        function scrollToNext() {
+            const sections = ['profile', 'experience', 'education', 'other-activities', 'publications', 'featured-writing', 'featured-projects'];
+            const windowHeight = window.innerHeight;
+            const scrollPosition = window.scrollY;
+            
+            // Find the next section to scroll to
+            let nextSection = sections[0];
+            for (let i = 0; i < sections.length; i++) {
+                const section = document.getElementById(sections[i]);
+                const sectionTop = section.offsetTop;
+                
+                if (scrollPosition < sectionTop - windowHeight/2) {
+                    nextSection = sections[i];
+                    break;
+                }
+                
+                // If we're at the last section, scroll to top
+                if (i === sections.length - 1) {
+                    nextSection = sections[0];
+                }
+            }
+            
+            document.getElementById(nextSection).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
