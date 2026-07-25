@@ -1,0 +1,33 @@
+---
+layout: default
+title: Blog
+description: Notes on AI security, agentic systems, red teaming, and research that ships.
+permalink: /blog/
+---
+
+<div class="wrap">
+  <header class="page-header">
+    <p class="mono-label">blog</p>
+    <h1>Writing</h1>
+    <p>
+      Short notes and longer writeups on agentic AI security, red teaming, and the
+      loop from research to detection. Some pieces start life on
+      <a href="https://www.reco.ai/blog" target="_blank" rel="noopener noreferrer">Reco's blog</a>
+      - I keep reflections and links here.
+    </p>
+  </header>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+    <li class="post-list__item">
+      <a href="{{ post.url | relative_url }}">
+        <span class="post-list__date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <span class="post-list__title">{{ post.title }}</span>
+        <span class="post-list__tag">{{ post.tags[0] | default: "note" }}</span>
+      </a>
+    </li>
+    {% else %}
+    <li class="empty">No posts yet.</li>
+    {% endfor %}
+  </ul>
+</div>
