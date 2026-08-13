@@ -1,0 +1,53 @@
+title: Daniel Alfasi
+tagline: AI Security Research Lead
+description: >-
+  AI Security Research Lead at Reco. Agentic AI security, red teaming,
+  and research that ships as detection.
+url: "https://danielalfasi.com"
+baseurl: ""
+
+author:
+  name: Daniel Alfasi
+  role: AI Security Research Lead
+  company: Reco
+  company_url: https://www.reco.ai
+  location: Tel Aviv, Israel
+  linkedin: https://www.linkedin.com/in/daniel-alfasi/
+  x: https://x.com/alfasiii
+  scholar: https://scholar.google.com/citations?user=uxuvP0gAAAAJ
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+permalink: /blog/:title/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - .sass-cache
+  - .jekyll-cache
+  - .grok
+  - _preview
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: Daniel Alfasi
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page

@@ -1,0 +1,11 @@
+_site
+.bundle
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+.DS_Store
+.ruby-version
+.tweet-cache
+vendor/
+
+_preview/

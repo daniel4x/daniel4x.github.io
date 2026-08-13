@@ -1,0 +1,144 @@
+---
+layout: home
+title: Daniel Alfasi
+description: AI Security Research Lead at Reco. Agentic AI security, red teaming, and research that ships.
+---
+
+<div class="wrap wrap--wide">
+  <section class="hero">
+    <div class="hero__grid">
+      <div>
+        <p class="prompt"><span>$</span> whoami</p>
+        <h1 class="hero__title">Daniel Alfasi</h1>
+        <p class="hero__role">
+          AI Security Research Lead at
+          <a href="https://www.reco.ai" target="_blank" rel="noopener noreferrer">Reco</a>
+        </p>
+        <p class="hero__lede">
+          I break (and sometimes build) agentic systems, coding agents, and LLM applications -
+          then ship the detection logic that catches the same attack in production.
+          Findings that stay in a slide deck aren't findings.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="{{ '/blog/' | relative_url }}">Read the blog</a>
+          <a class="btn btn--ghost" href="{{ '/talks/' | relative_url }}">Talks &amp; papers</a>
+        </div>
+      </div>
+      <div class="hero__aside">
+        <img
+          class="hero__photo"
+          src="{{ '/assets/img/prof_pic.jpg' | relative_url }}"
+          alt="Portrait of Daniel Alfasi"
+          width="148"
+          height="148"
+        >
+        <ul class="hero__social">
+          <li>
+            <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer">linkedin</a>
+          </li>
+          <li>
+            <a href="{{ site.author.x }}" target="_blank" rel="noopener noreferrer">x (@alfasiii)</a>
+          </li>
+          <li>
+            <a href="{{ site.author.scholar }}" target="_blank" rel="noopener noreferrer">scholar</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <div>
+        <p class="mono-label">selected work</p>
+        <h2>Research that ships</h2>
+      </div>
+    </div>
+
+    <div class="card-grid card-grid--2">
+      <a class="card" href="{{ '/blog/inside-claude-fable-5/' | relative_url }}">
+        <div class="card__media">
+          <img
+            src="{{ '/assets/img/blog/claude-fable-5-cover.png' | relative_url }}"
+            alt="Cover art for Inside Claude Fable 5 red team findings"
+            loading="lazy"
+          >
+        </div>
+        <div class="card__body">
+          <p class="card__meta"><span class="tag">writing</span> · Jun 14, 2026 · Reco</p>
+          <h3 class="card__title">Inside Claude Fable 5: red-team findings</h3>
+          <p class="card__excerpt">
+            431 adversarial evaluations across agent archetypes - what held, what failed,
+            and why a production lifetime measured in days still matters for agent security.
+          </p>
+          <p class="card__footer">read notes →</p>
+        </div>
+      </a>
+
+      <a class="card" href="{{ '/talks/' | relative_url }}#vulnscopper">
+        <div class="card__media" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#0f1830 0%,#12304a 50%,#0b3b3a 100%);">
+          <div style="font-family:var(--font-mono);font-size:0.85rem;color:var(--accent);letter-spacing:0.06em;text-align:center;padding:1rem;">
+            <div style="opacity:0.7;margin-bottom:0.5rem;">CoNEXT · GNNet</div>
+            <div style="font-size:1.35rem;font-weight:600;color:var(--text);letter-spacing:-0.02em;">VulnScopper</div>
+            <div style="opacity:0.7;margin-top:0.5rem;">Dec 9, 2024 · UCLA</div>
+          </div>
+        </div>
+        <div class="card__body">
+          <p class="card__meta"><span class="tag">talk / paper</span> · Dec 9, 2024</p>
+          <h3 class="card__title">VulnScopper: hidden links between unseen security entities</h3>
+          <p class="card__excerpt">
+            Graph neural networks + LLMs for CVE enrichment when the NVD can't keep up -
+            presented at the GNNet workshop at ACM CoNEXT 2024.
+          </p>
+          <p class="card__footer">details &amp; links →</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <div>
+        <p class="mono-label">writing</p>
+        <h2>Latest from the blog</h2>
+      </div>
+      <a class="section__more" href="{{ '/blog/' | relative_url }}">all posts →</a>
+    </div>
+
+    <ul class="post-list">
+      {% assign posts = site.posts | slice: 0, 5 %}
+      {% for post in posts %}
+      <li class="post-list__item">
+        <a href="{{ post.url | relative_url }}">
+          <span class="post-list__date">{{ post.date | date: "%b %Y" }}</span>
+          <span class="post-list__title">{{ post.title }}</span>
+          <span class="post-list__tag">{{ post.tags[0] | default: "note" }}</span>
+        </a>
+      </li>
+      {% else %}
+      <li class="empty">No posts yet - check back soon.</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <div>
+        <p class="mono-label">focus</p>
+        <h2>What I work on</h2>
+      </div>
+    </div>
+    <p style="color:var(--text-muted);max-width:58ch;margin:0 0 1rem;">
+      Agentic red teaming at scale: prompt injection, tool misuse, memory and RAG poisoning,
+      scenario generation, and turning research into production detections.
+    </p>
+    <div class="chip-row">
+      <span class="chip">agentic AI security</span>
+      <span class="chip">AI red teaming</span>
+      <span class="chip">prompt injection</span>
+      <span class="chip">LLM applications</span>
+      <span class="chip">knowledge graphs</span>
+      <span class="chip">GNN + NLP</span>
+    </div>
+  </section>
+</div>
