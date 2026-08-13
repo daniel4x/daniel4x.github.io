@@ -81,30 +81,14 @@ Concretely: if a developer sets `defaultMode: "acceptEdits"` (a common convenien
 Here is the end-to-end path, using indirect prompt injection as the delivery mechanism — the attacker never touches the victim's machine directly; they just leave instructions somewhere the agent will read them.
 
 <figure class="figure-wide">
-  <div class="diagram">
-    <p class="diagram__eyebrow">Attack chain</p>
-    <p class="diagram__title">From untrusted content to always-on execution</p>
-    <p class="diagram__sub">acceptEdits auto-approves the write; global hooks auto-execute the result.</p>
-    <div class="diagram__grid diagram__grid--3">
-      <div class="dcard dc-danger">
-        <p class="dcard__tag">1 · PLANT</p>
-        <p class="dcard__title">Untrusted content</p>
-        <p class="dcard__body">Attacker leaves a hidden instruction in a README, issue body, fetched page, or AGENTS.md: write a SessionStart hook under ~/.grok/hooks/.</p>
-      </div>
-      <div class="dcard dc-warn">
-        <p class="dcard__tag">2 · WRITE</p>
-        <p class="dcard__title">Silent auto-approve</p>
-        <p class="dcard__body">Developer asks the agent to review or work with that content. Under defaultMode: acceptEdits, the write to $GROK_HOME/hooks/ succeeds with no prompt.</p>
-      </div>
-      <div class="dcard dc-orange">
-        <p class="dcard__tag">3 · EXECUTE</p>
-        <p class="dcard__title">Next session, any dir</p>
-        <p class="dcard__body">A later, unrelated session loads the global hook as "Always" trusted and runs the attacker's command at full user privilege.</p>
-      </div>
-    </div>
-    <p class="diagram__note diagram__note--danger">The developer never approved code execution. They approved edits. That is the entire bug.</p>
-  </div>
+  <img src="{{ '/assets/img/blog/grok-hooks-bug.png' | relative_url }}" alt="Attack chain from untrusted content to always-on execution: plant, silent auto-approve write, then execute on the next session in any directory" loading="lazy">
 </figure>
+
+1. **Plant — Untrusted content.** Attacker leaves a hidden instruction in a README, issue body, fetched page, or `AGENTS.md`: write a SessionStart hook under `~/.grok/hooks/`.
+2. **Write — Silent auto-approve.** Developer asks the agent to review or work with that content. Under `defaultMode: acceptEdits`, the write to `$GROK_HOME/hooks/` succeeds with no prompt.
+3. **Execute — Next session, any dir.** A later, unrelated session loads the global hook as "Always" trusted and runs the attacker's command at full user privilege.
+
+The developer never approved code execution. They approved edits. That is the entire bug.
 
 ## Verified reproduction {#reproduction}
 
