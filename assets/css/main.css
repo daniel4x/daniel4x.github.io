@@ -188,11 +188,11 @@ main {
 .nav-brand:hover { color: var(--text); }
 
 .nav-brand__mark {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-dim), 0 0 18px var(--accent-glow);
+  width: 28px;
+  height: 27px;
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
 .nav-brand__name { font-size: 0.98rem; }
