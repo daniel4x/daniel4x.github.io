@@ -56,43 +56,33 @@ description: AI Security Research Lead at Reco. Agentic AI security, red teaming
     </div>
 
     <div class="card-grid card-grid--2">
-      <a class="card" href="{{ '/blog/inside-claude-fable-5/' | relative_url }}">
-        <div class="card__media">
+      {% assign featured = site.posts | slice: 0, 2 %}
+      {% for post in featured %}
+      {% assign cover = post.image | default: post.card_image %}
+      {% assign cover_alt = post.image_alt | default: post.card_image_alt | default: post.title %}
+      <a class="card" href="{{ post.url | relative_url }}">
+        <div class="card__media"{% unless cover %} style="display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#0f1830 0%,#12304a 50%,#0b3b3a 100%);"{% endunless %}>
+          {% if cover %}
           <img
-            src="{{ '/assets/img/blog/claude-fable-5-cover.png' | relative_url }}"
-            alt="Cover art for Inside Claude Fable 5 red team findings"
+            src="{{ cover | relative_url }}"
+            alt="{{ cover_alt }}"
             loading="lazy"
           >
+          {% else %}
+          <div style="font-family:var(--font-mono);font-size:0.85rem;color:var(--accent);letter-spacing:0.06em;text-align:center;padding:1.25rem;">
+            <div style="opacity:0.7;margin-bottom:0.5rem;">{{ post.category | default: "writing" }}</div>
+            <div style="font-size:1.05rem;font-weight:600;color:var(--text);letter-spacing:-0.02em;line-height:1.35;">{{ post.title }}</div>
+          </div>
+          {% endif %}
         </div>
         <div class="card__body">
-          <p class="card__meta"><span class="tag">writing</span> · Jun 14, 2026 · Reco</p>
-          <h3 class="card__title">Inside Claude Fable 5: red-team findings</h3>
-          <p class="card__excerpt">
-            431 adversarial evaluations across agent archetypes - what held, what failed,
-            and why a production lifetime measured in days still matters for agent security.
-          </p>
+          <p class="card__meta"><span class="tag">{{ post.category | default: "writing" }}</span> · {{ post.date | date: "%b %-d, %Y" }}{% if post.external_url %} · Reco{% endif %}</p>
+          <h3 class="card__title">{{ post.title }}</h3>
+          <p class="card__excerpt">{{ post.description | strip | truncate: 180 }}</p>
           <p class="card__footer">read notes →</p>
         </div>
       </a>
-
-      <a class="card" href="{{ '/talks/' | relative_url }}#vulnscopper">
-        <div class="card__media" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#0f1830 0%,#12304a 50%,#0b3b3a 100%);">
-          <div style="font-family:var(--font-mono);font-size:0.85rem;color:var(--accent);letter-spacing:0.06em;text-align:center;padding:1rem;">
-            <div style="opacity:0.7;margin-bottom:0.5rem;">CoNEXT · GNNet</div>
-            <div style="font-size:1.35rem;font-weight:600;color:var(--text);letter-spacing:-0.02em;">VulnScopper</div>
-            <div style="opacity:0.7;margin-top:0.5rem;">Dec 9, 2024 · UCLA</div>
-          </div>
-        </div>
-        <div class="card__body">
-          <p class="card__meta"><span class="tag">talk / paper</span> · Dec 9, 2024</p>
-          <h3 class="card__title">VulnScopper: hidden links between unseen security entities</h3>
-          <p class="card__excerpt">
-            Graph neural networks + LLMs for CVE enrichment when the NVD can't keep up -
-            presented at the GNNet workshop at ACM CoNEXT 2024.
-          </p>
-          <p class="card__footer">details &amp; links →</p>
-        </div>
-      </a>
+      {% endfor %}
     </div>
   </section>
 

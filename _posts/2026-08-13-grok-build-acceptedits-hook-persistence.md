@@ -14,6 +14,10 @@ description: >-
   directory is always trusted and runs at full user privilege. Combining the
   two turns a convenience setting into persistent, machine-wide code execution.
   How the composition works, how it was verified, and how xAI fixed it.
+card_image: /assets/img/blog/grok-hooks-bug.png
+card_image_alt: >-
+  Attack chain from untrusted content to always-on execution: plant, silent
+  auto-approve write, then execute on the next session in any directory
 ---
 
 Grok Build, xAI's agentic coding CLI, ships two features that are each reasonable in isolation: an `acceptEdits` permission mode that auto-approves file writes, and a global hooks directory that is always trusted and runs commands with full user privileges. Nobody documents what happens when you combine them.
