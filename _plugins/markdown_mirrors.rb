@@ -7,6 +7,8 @@
 
 require "date"
 require "fileutils"
+require "open3"
+require "time"
 require "yaml"
 
 module AgentMarkdown
@@ -60,6 +62,7 @@ module AgentMarkdown
     write_file(site, "/llms.txt", llms_txt(site, mirrors.map(&:first)))
     write_file(site, "/llms-full.txt", llms_full(site, mirrors))
     write_file(site, "/AGENTS.md", agents_md(site))
+    write_file(site, "/sitemap.md", sitemap_md(site, mirrors.map(&:first)))
   end
 
   def body_for(site, doc)
@@ -159,6 +162,7 @@ module AgentMarkdown
     lines << ""
     lines << "## Optional"
     lines << "- [AGENTS.md](#{absolute(site, "/AGENTS.md")}): How agents should fetch, cite, and attribute this site."
+    lines << "- [Sitemap](#{absolute(site, "/sitemap.md")}): Site hierarchy with last-updated dates."
     "#{lines.join("\n")}\n"
   end
 
@@ -283,13 +287,84 @@ module AgentMarkdown
     MD
   end
 
-  def last_updated(site, doc)
+  def sitemap_md(site, docs)
+    pages, posts = docs.partition { |doc| SITE_ORDER.include?(doc.url) }
+    newest = docs.map { |doc| last_updated(site, doc) }.compact.max
+    origin = site.config["url"].to_s.chomp("/")
+    data = {
+      "title" => "Sitemap",
+      "canonical_url" => absolute(site, "/sitemap.md"),
+      "last_updated" => newest,
+      "description" => "Human-readable sitemap of #{origin.sub(%r{\Ahttps?://}, "")}."
+    }
+
+    lines = []
+    lines << "#{YAML.dump(data, line_width: -1).rstrip}\n---\n"
+    lines << "# Sitemap"
+    lines << ""
+    lines << "Overview of [#{site.config["title"]}](#{origin}). Prefer markdown twins over HTML. Machine-readable: [sitemap.xml](/sitemap.xml)."
+    lines << ""
+    lines << "## Site"
+    lines << ""
+    pages.each { |doc| lines << sitemap_item(site, doc) }
+    unless posts.empty?
+      lines << ""
+      lines << "## Writing"
+      lines << ""
+      posts.each { |doc| lines << sitemap_item(site, doc) }
+    end
+    lines << ""
+    lines << "## For agents"
+    lines << ""
+    lines << "- [AGENTS.md](/AGENTS.md): How to fetch, cite, and attribute this site."
+    lines << "- [llms.txt](/llms.txt): Catalog of pages."
+    lines << "- [llms-full.txt](/llms-full.txt): Full markdown dump."
+    lines << "- [sitemap.xml](/sitemap.xml): URL list with lastmod dates."
+    "#{lines.join("\n")}\n"
+  end
+
+  def sitemap_item(site, doc)
+    title = case doc.url
+            when "/" then "Home"
+            when "/blog/" then "Blog"
+            else doc.data["title"]
+            end
+    href = markdown_path(doc.url)
+    updated = last_updated(site, doc)
+    desc = one_line(doc.data["description"] || doc.data["subtitle"] || (doc.url == "/" ? site.config["description"] : nil))
+    link = "[#{title}](#{href})"
+    link = "#{link} (#{updated})" if updated
+    desc.empty? ? "- #{link}" : "- #{link}: #{desc}"
+  end
+
+  def last_modified_value(site, doc)
     if %w[/ /blog/].include?(doc.url) && site.posts.docs.any?
-      return format_date(posts_newest(site).first.date)
+      return posts_newest(site).first.date
     end
 
     value = doc.data["last_modified_at"] || doc.data["date"]
-    format_date(value) || format_date(File.mtime(doc.path))
+    return value if value.respond_to?(:strftime)
+
+    if value
+      parsed = Date.parse(value.to_s) rescue nil
+      return parsed if parsed
+    end
+
+    git_mtime(site, doc.path) || File.mtime(doc.path)
+  end
+
+  def git_mtime(site, path)
+    out, status = Open3.capture2("git", "-C", site.source, "log", "-1", "--format=%cI", "--", path)
+    iso = out.strip
+    return if !status.success? || iso.empty?
+
+    Time.iso8601(iso)
+  rescue ArgumentError
+    nil
+  end
+
+  def last_updated(site, doc)
+    format_date(last_modified_value(site, doc))
   end
 
   def format_date(value)
@@ -339,6 +414,9 @@ class AgentMarkdownUrlGenerator < Jekyll::Generator
   def generate(site)
     AgentMarkdown.ordered_docs(site).each do |doc|
       doc.data["markdown_url"] = AgentMarkdown.markdown_path(doc.url)
+      next if doc.data["last_modified_at"] || doc.data["date"]
+
+      doc.data["last_modified_at"] = AgentMarkdown.last_modified_value(site, doc)
     end
   end
 end
