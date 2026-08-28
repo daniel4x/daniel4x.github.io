@@ -34,6 +34,8 @@ exclude:
   - node_modules
   - vendor
   - README.md
+  - AGENTS.md
+  - CLAUDE.md
   - .sass-cache
   - .jekyll-cache
   - .grok
