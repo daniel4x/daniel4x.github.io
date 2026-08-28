@@ -63,6 +63,7 @@ module AgentMarkdown
     write_file(site, "/llms-full.txt", llms_full(site, mirrors))
     write_file(site, "/AGENTS.md", agents_md(site))
     write_file(site, "/sitemap.md", sitemap_md(site, mirrors.map(&:first)))
+    write_file(site, "/sitemap-agents.xml", agents_sitemap(site, mirrors.map(&:first)))
   end
 
   def body_for(site, doc)
@@ -72,7 +73,7 @@ module AgentMarkdown
     else
       return unless File.extname(doc.path) == ".md"
 
-      expand_relative_urls(site, strip_frontmatter(File.read(doc.path)))
+      expand_relative_urls(site, strip_twin_ignores(strip_frontmatter(File.read(doc.path))))
     end
   end
 
@@ -293,7 +294,6 @@ module AgentMarkdown
     origin = site.config["url"].to_s.chomp("/")
     data = {
       "title" => "Sitemap",
-      "canonical_url" => absolute(site, "/sitemap.md"),
       "last_updated" => newest,
       "description" => "Human-readable sitemap of #{origin.sub(%r{\Ahttps?://}, "")}."
     }
@@ -319,7 +319,31 @@ module AgentMarkdown
     lines << "- [AGENTS.md](/AGENTS.md): How to fetch, cite, and attribute this site."
     lines << "- [llms.txt](/llms.txt): Catalog of pages."
     lines << "- [llms-full.txt](/llms-full.txt): Full markdown dump."
-    lines << "- [sitemap.xml](/sitemap.xml): URL list with lastmod dates."
+    lines << "- [sitemap.xml](/sitemap.xml): URL list for the HTML pages."
+    lines << "- [sitemap-agents.xml](/sitemap-agents.xml): URL list for the markdown twins and agent files."
+    "#{lines.join("\n")}\n"
+  end
+
+  # XML sitemap for the markdown twins + agent files, linked from robots.txt.
+  # The stock jekyll-sitemap sitemap.xml only covers the HTML pages.
+  def agents_sitemap(site, docs)
+    newest = docs.map { |doc| last_updated(site, doc) }.compact.max
+    locs = docs.map { |doc| [absolute(site, markdown_path(doc.url)), last_updated(site, doc)] }
+    %w[/AGENTS.md /llms.txt /llms-full.txt /sitemap.md].each do |path|
+      locs << [absolute(site, path), newest]
+    end
+
+    lines = [
+      %(<?xml version="1.0" encoding="UTF-8"?>),
+      %(<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">)
+    ]
+    locs.each do |loc, lastmod|
+      lines << "  <url>"
+      lines << "    <loc>#{loc}</loc>"
+      lines << "    <lastmod>#{lastmod}</lastmod>" if lastmod
+      lines << "  </url>"
+    end
+    lines << "</urlset>"
     "#{lines.join("\n")}\n"
   end
 
@@ -391,6 +415,13 @@ module AgentMarkdown
 
   def strip_frontmatter(raw)
     raw.sub(/\A---[ \t]*\r?\n.*?\r?\n---[ \t]*\r?\n/m, "")
+  end
+
+  # Drop presentation-only HTML blocks the source fences with
+  # <!-- twin:ignore --> ... <!-- /twin:ignore -->. Invisible on the HTML page
+  # (plain comments), removed from the markdown twins and llms-full.txt.
+  def strip_twin_ignores(text)
+    text.gsub(%r{^[ \t]*<!--[ \t]*twin:ignore[ \t]*-->.*?<!--[ \t]*/twin:ignore[ \t]*-->[ \t]*\r?\n?}m, "")
   end
 
   def expand_relative_urls(site, text)

@@ -26,6 +26,7 @@ The answer: any content that reaches the model's context — a README, an issue 
 
 I reported this to xAI. They acknowledged it, folded client-side Grok Build into their bounty program's scope, rewarded the report, and shipped a fix. Details, PoC, and timeline below.
 
+<!-- twin:ignore -->
 <div class="toc">
   <p class="toc__title">Contents</p>
   <ol>
@@ -40,6 +41,7 @@ I reported this to xAI. They acknowledged it, folded client-side Grok Build into
     <li><a href="#lessons">Lessons beyond Grok Build</a></li>
   </ol>
 </div>
+<!-- /twin:ignore -->
 
 ## What is Grok Build? {#what-is-grok-build}
 
@@ -84,9 +86,11 @@ Concretely: if a developer sets `defaultMode: "acceptEdits"` (a common convenien
 
 Here is the end-to-end path, using indirect prompt injection as the delivery mechanism — the attacker never touches the victim's machine directly; they just leave instructions somewhere the agent will read them.
 
+<!-- twin:ignore -->
 <figure class="figure-wide">
   <img src="{{ '/assets/img/blog/grok-hooks-bug.png' | relative_url }}" alt="Attack chain from untrusted content to always-on execution: plant, silent auto-approve write, then execute on the next session in any directory" loading="lazy">
 </figure>
+<!-- /twin:ignore -->
 
 1. **Plant — Untrusted content.** Attacker leaves a hidden instruction in a README, issue body, fetched page, or `AGENTS.md`: write a SessionStart hook under `~/.grok/hooks/`.
 2. **Write — Silent auto-approve.** Developer asks the agent to review or work with that content. Under `defaultMode: acceptEdits`, the write to `$GROK_HOME/hooks/` succeeds with no prompt.

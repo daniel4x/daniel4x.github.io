@@ -32,6 +32,7 @@ I've contributed to the **OWASP AI Vulnerability Scoring System (AIVSS)** and th
 - [Google Scholar](https://scholar.google.com/citations?user=uxuvP0gAAAAJ)
 - [Reco](https://www.reco.ai)
 
+<!-- twin:ignore -->
 <div class="chip-row">
   <span class="chip">agentic AI security</span>
   <span class="chip">AI red teaming</span>
@@ -40,3 +41,4 @@ I've contributed to the **OWASP AI Vulnerability Scoring System (AIVSS)** and th
   <span class="chip">GNN</span>
   <span class="chip">NLP / NER</span>
 </div>
+<!-- /twin:ignore -->

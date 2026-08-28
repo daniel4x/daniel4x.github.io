@@ -23,6 +23,7 @@
   <link rel="shortcut icon" href="{{ '/assets/img/favicon.ico' | relative_url }}">
   <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
   {% seo title=false %}
+  {% include schema.html %}
   {% if page.markdown_url %}
   <link rel="alternate" type="text/markdown" href="{{ page.markdown_url | relative_url }}">
   {% endif %}

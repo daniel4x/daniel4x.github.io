@@ -29,6 +29,7 @@ I reviewed the draft and contributed three scenarios that landed in the publishe
 
 They came from the same line of testing: watching how skills actually execute in multi-model pipelines and inside SaaS copilots, not how they look on disk.
 
+<!-- twin:ignore -->
 <div class="toc">
   <p class="toc__title">Contents</p>
   <ol>
@@ -39,6 +40,7 @@ They came from the same line of testing: watching how skills actually execute in
     <li><a href="#takeaways">What this changes in review</a></li>
   </ol>
 </div>
+<!-- /twin:ignore -->
 
 ## The ten risks {#the-list}
 
@@ -59,6 +61,7 @@ The list follows a skill from the moment it is written through distribution, ins
 
 The evidence behind it is already in production: poisoned registries, scanner bypasses, over-privileged manifests, and skills that fetch instructions from URLs nobody pins. The three scenarios I added sit on top of that. They are not exotic variants. They are what you see once you stop treating a skill as a static file and start treating it as runtime behavior.
 
+<!-- twin:ignore -->
 <figure class="figure-cover">
   <img
     src="{{ '/assets/img/blog/owasp-agentic-skills-top-10-2026.png' | relative_url }}"
@@ -71,6 +74,7 @@ The evidence behind it is already in production: poisoned registries, scanner by
     <a href="https://owasp.org/www-project-agentic-skills-top-10/" target="_blank" rel="noopener noreferrer">OWASP</a>.
   </figcaption>
 </figure>
+<!-- /twin:ignore -->
 
 ## Relay-Node Amplification — AST05 {#ast05}
 
@@ -82,6 +86,7 @@ An injected instruction is not filtered out evenly along that path. Each model r
 
 The attacker does not need to beat the whole pipeline. **One weak relay is enough** to carry the payload into the node that takes action.
 
+<!-- twin:ignore -->
 <figure>
   <div class="diagram relay-amp">
     <p class="diagram__eyebrow">AST05 · Relay-Node Amplification</p>
@@ -129,6 +134,7 @@ The attacker does not need to beat the whole pipeline. **One weak relay is enoug
     The action node never has to be injectable. It only has to trust the hop that was.
   </figcaption>
 </figure>
+<!-- /twin:ignore -->
 
 The property underneath is easy to miss in a design review: a chain's injection resistance is the **minimum** over the backbone models on its path. It does not compose. Certifying the endpoints does not certify the chain.
 

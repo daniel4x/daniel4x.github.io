@@ -1,0 +1,43 @@
+{%- assign a = site.author -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ site.url }}/#person",
+      "name": {{ a.name | jsonify }},
+      "url": "{{ site.url }}/",
+      "jobTitle": {{ a.role | jsonify }},
+      "worksFor": {
+        "@type": "Organization",
+        "name": {{ a.company | jsonify }},
+        "url": {{ a.company_url | jsonify }}
+      },
+      "sameAs": [
+        {{ a.linkedin | jsonify }},
+        {{ a.x | jsonify }},
+        {{ a.scholar | jsonify }}
+      ]
+    }{% if page.layout == "post" %},
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ page.url | absolute_url }}#article",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ page.url | absolute_url }}" },
+      "headline": {{ page.title | jsonify }},
+      {%- assign desc = page.description | strip_html | normalize_whitespace -%}
+      {%- if desc != "" %}
+      "description": {{ desc | jsonify }},
+      {%- endif %}
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+      {%- assign img = page.image | default: page.card_image -%}
+      {%- if img %}
+      "image": "{{ img | absolute_url }}",
+      {%- endif %}
+      "author": { "@id": "{{ site.url }}/#person" },
+      "publisher": { "@id": "{{ site.url }}/#person" }
+    }{% endif %}
+  ]
+}
+</script>

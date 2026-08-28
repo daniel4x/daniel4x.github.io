@@ -23,6 +23,7 @@ As part of my work at Reco, I spend a lot of time putting agentic models under p
 
 When Anthropic shipped Claude Fable 5 as a purpose-built agent backbone, that was exactly the kind of model we care about. Shortly after launch, I ran it through our agentic-security red-teaming benchmark: **431 adversarial evaluations** across **10 enterprise agent archetypes** and **99 attack scenarios**.
 
+<!-- twin:ignore -->
 <figure>
   <img
     src="{{ '/assets/img/blog/claude-fable-5-radar.jpg' | relative_url }}"
@@ -35,6 +36,7 @@ When Anthropic shipped Claude Fable 5 as a purpose-built agent backbone, that wa
     <a href="https://www.reco.ai/blog/inside-claude-fable-5-red-team-findings" target="_blank" rel="noopener noreferrer">Reco.ai</a>.
   </figcaption>
 </figure>
+<!-- /twin:ignore -->
 
 ## What I care about measuring
 
