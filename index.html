@@ -6,46 +6,46 @@ description: AI Security Research Lead at Reco. Agentic AI security, red teaming
 
 <div class="wrap wrap--wide">
   <section class="hero">
-    <div class="hero__grid">
-      <div>
-        <p class="prompt"><span>$</span> whoami</p>
-        <h1 class="hero__title">Daniel Alfasi</h1>
-        <p class="hero__role">
-          AI Security Research Lead at
-          <a href="https://www.reco.ai" target="_blank" rel="noopener noreferrer">Reco</a>
-        </p>
-        <p class="hero__lede">
-          I break (and sometimes build) agentic systems, coding agents, and LLM applications -
-          then ship the detection logic that catches the same attack in production.
-          Findings that stay in a slide deck aren't findings.
-        </p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="{{ '/blog/' | relative_url }}">Read the blog</a>
-          <a class="btn btn--ghost" href="{{ '/talks/' | relative_url }}">Talks &amp; papers</a>
-        </div>
+    <div>
+      <p class="hero__eyebrow">
+        {{ site.author.role }} at
+        <a href="{{ site.author.company_url }}" target="_blank" rel="noopener noreferrer">{{ site.author.company }}</a>
+        · Tel Aviv
+      </p>
+      <h1 class="hero__title">Daniel Alfasi</h1>
+      <p class="hero__lede">
+        I break (and sometimes build) agentic systems, coding agents, and LLM applications -
+        then ship the detection logic that catches the same attack in production.
+        <strong>Findings that stay in a slide deck aren't findings.</strong>
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="{{ '/blog/' | relative_url }}">Read the blog</a>
+        <a class="btn btn--ghost" href="{{ '/talks/' | relative_url }}">Talks &amp; papers</a>
       </div>
-      <div class="hero__aside">
-        <img
-          class="hero__photo"
-          src="{{ '/assets/img/prof_pic.jpg' | relative_url }}"
-          alt="Portrait of Daniel Alfasi"
-          width="148"
-          height="148"
-        >
-        <ul class="hero__social">
-          <li>
-            <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer">linkedin</a>
-          </li>
-          <li>
-            <a href="{{ site.author.x }}" target="_blank" rel="noopener noreferrer">x (@alfasiii)</a>
-          </li>
-          <li>
-            <a href="{{ site.author.scholar }}" target="_blank" rel="noopener noreferrer">scholar</a>
-          </li>
-        </ul>
-      </div>
+      <ul class="hero__social">
+        <li><a href="{{ site.author.linkedin }}" target="_blank" rel="me noopener noreferrer">linkedin ↗</a></li>
+        <li><a href="{{ site.author.x }}" target="_blank" rel="me noopener noreferrer">x (@{{ site.author.x_handle }}) ↗</a></li>
+        <li><a href="{{ site.author.scholar }}" target="_blank" rel="me noopener noreferrer">scholar ↗</a></li>
+      </ul>
     </div>
+    <picture>
+      <source srcset="{{ '/assets/img/prof_pic-400.webp' | relative_url }}" type="image/webp">
+      <img
+        class="hero__photo"
+        src="{{ '/assets/img/prof_pic-400.jpg' | relative_url }}"
+        alt="Portrait of Daniel Alfasi"
+        width="400"
+        height="400"
+        fetchpriority="high"
+      >
+    </picture>
   </section>
+
+  <ul class="highlights" aria-label="Highlights">
+    {% for item in site.data.highlights %}
+    <li><a href="{{ item.url | relative_url }}"><strong>{{ item.label }}</strong>{{ item.text }}</a></li>
+    {% endfor %}
+  </ul>
 
   <section class="section">
     <div class="section__head">
@@ -55,33 +55,21 @@ description: AI Security Research Lead at Reco. Agentic AI security, red teaming
       </div>
     </div>
 
-    <div class="card-grid card-grid--2">
+    <div class="card-grid">
       {% assign featured = site.posts | slice: 0, 2 %}
       {% for post in featured %}
       {% assign cover = post.image | default: post.card_image %}
       {% assign cover_alt = post.image_alt | default: post.card_image_alt | default: post.title %}
-      <a class="card" href="{{ post.url | relative_url }}">
-        <div class="card__media"{% unless cover %} style="display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#0f1830 0%,#12304a 50%,#0b3b3a 100%);"{% endunless %}>
-          {% if cover %}
-          <img
-            src="{{ cover | relative_url }}"
-            alt="{{ cover_alt }}"
-            loading="lazy"
-          >
-          {% else %}
-          <div style="font-family:var(--font-mono);font-size:0.85rem;color:var(--accent);letter-spacing:0.06em;text-align:center;padding:1.25rem;">
-            <div style="opacity:0.7;margin-bottom:0.5rem;">{{ post.category | default: "writing" }}</div>
-            <div style="font-size:1.05rem;font-weight:600;color:var(--text);letter-spacing:-0.02em;line-height:1.35;">{{ post.title }}</div>
-          </div>
-          {% endif %}
-        </div>
-        <div class="card__body">
-          <p class="card__meta"><span class="tag">{{ post.category | default: "writing" }}</span> · {{ post.date | date: "%b %-d, %Y" }}{% if post.external_url %} · Reco{% endif %}</p>
-          <h3 class="card__title">{{ post.title }}</h3>
-          <p class="card__excerpt">{{ post.description | strip | truncate: 180 }}</p>
-          <p class="card__footer">read notes →</p>
-        </div>
-      </a>
+      <article class="card">
+        {% if cover %}
+        <img src="{{ cover | relative_url }}" alt="{{ cover_alt | strip_html | normalize_whitespace | escape }}" loading="eager" style="view-transition-name: cover-{{ post.slug }}">
+        {% else %}
+        <div class="card__plain" aria-hidden="true">{{ post.category | default: "writing" }}</div>
+        {% endif %}
+        <p class="card__meta"><span class="tag">{{ post.category | default: "writing" }}</span> · <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>{% if post.read_time %} · {{ post.read_time }}{% endif %}</p>
+        <h3 class="card__title"><a class="card-link" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p class="card__excerpt">{{ post.description | strip_html | normalize_whitespace | truncate: 180 }}</p>
+      </article>
       {% endfor %}
     </div>
   </section>
@@ -98,13 +86,7 @@ description: AI Security Research Lead at Reco. Agentic AI security, red teaming
     <ul class="post-list">
       {% assign posts = site.posts | slice: 0, 5 %}
       {% for post in posts %}
-      <li class="post-list__item">
-        <a href="{{ post.url | relative_url }}">
-          <span class="post-list__date">{{ post.date | date: "%b %Y" }}</span>
-          <span class="post-list__title">{{ post.title }}</span>
-          <span class="post-list__tag">{{ post.tags[0] | default: "note" }}</span>
-        </a>
-      </li>
+      {% include post-item.html post=post heading="h3" date_format="%b %Y" %}
       {% else %}
       <li class="empty">No posts yet - check back soon.</li>
       {% endfor %}
@@ -117,18 +99,19 @@ description: AI Security Research Lead at Reco. Agentic AI security, red teaming
         <p class="mono-label">focus</p>
         <h2>What I work on</h2>
       </div>
+      <a class="section__more" href="{{ '/about/' | relative_url }}">about me →</a>
     </div>
-    <p style="color:var(--text-muted);max-width:58ch;margin:0 0 1rem;">
+    <p class="section__lede">
       Agentic red teaming at scale: prompt injection, tool misuse, memory and RAG poisoning,
       scenario generation, and turning research into production detections.
     </p>
-    <div class="chip-row">
-      <span class="chip">agentic AI security</span>
-      <span class="chip">AI red teaming</span>
-      <span class="chip">prompt injection</span>
-      <span class="chip">LLM applications</span>
-      <span class="chip">knowledge graphs</span>
-      <span class="chip">GNN + NLP</span>
-    </div>
+    <ul class="chip-row" style="list-style:none;padding:0">
+      <li class="chip">agentic AI security</li>
+      <li class="chip">AI red teaming</li>
+      <li class="chip">prompt injection</li>
+      <li class="chip">LLM applications</li>
+      <li class="chip">knowledge graphs</li>
+      <li class="chip">GNN + NLP</li>
+    </ul>
   </section>
 </div>

@@ -1,0 +1,32 @@
+---
+layout: none
+permalink: /feed.json
+---
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": {{ site.title | jsonify }},
+  "description": {{ site.description | normalize_whitespace | jsonify }},
+  "home_page_url": "{{ '/' | absolute_url }}",
+  "feed_url": "{{ '/feed.json' | absolute_url }}",
+  "language": "{{ site.lang | default: 'en' }}",
+  "authors": [{ "name": {{ site.author.name | jsonify }}, "url": "{{ '/' | absolute_url }}" }],
+  "items": [
+    {%- for post in site.posts %}
+    {
+      "id": "{{ post.url | absolute_url }}",
+      "url": "{{ post.url | absolute_url }}",
+      "_markdown_url": "{{ post.markdown_url | absolute_url }}",
+      "title": {{ post.title | jsonify }},
+      "summary": {{ post.description | strip_html | normalize_whitespace | jsonify }},
+      {%- assign cover = post.image | default: post.card_image -%}
+      {%- if cover %}
+      "image": "{{ cover | absolute_url }}",
+      {%- endif %}
+      "date_published": "{{ post.date | date_to_xmlschema }}",
+      "date_modified": "{{ post.last_modified_at | default: post.date | date_to_xmlschema }}",
+      "tags": {{ post.tags | jsonify }},
+      "content_html": {{ post.content | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
+}

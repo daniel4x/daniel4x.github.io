@@ -11,3 +11,7 @@ vendor/
 _preview/
 
 .claude/
+
+# Agent skills (modern-web-guidance) - local tooling only
+.agents/
+skills-lock.json

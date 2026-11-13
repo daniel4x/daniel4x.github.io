@@ -1,0 +1,13 @@
+# Credibility strip on the home page (also mirrored into /index.md).
+- label: BSides TLV 2026
+  text: "Two talks: GROPUS and Off With Their Labels"
+  url: /talks/
+- label: OWASP
+  text: Contributor to the Agentic Skills Top 10 and AIVSS
+  url: /blog/owasp-agentic-skills-top-10/
+- label: ACM CoNEXT 2024
+  text: "VulnScopper: knowledge graphs and LLMs for CVE enrichment"
+  url: /talks/
+- label: Claude Fable 5
+  text: Red-team findings from 431 adversarial evaluations
+  url: /blog/inside-claude-fable-5/

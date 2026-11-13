@@ -1,18 +1,24 @@
 ---
 layout: default
 ---
+<div class="read-progress"></div>
 <article class="wrap">
   <header class="page-header">
-    <p class="mono-label">{{ page.category | default: "writing" }}</p>
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="{{ '/' | relative_url }}">home</a></li>
+        <li><a href="{{ '/blog/' | relative_url }}">blog</a></li>
+        <li aria-current="page">{{ page.category | default: "writing" }}</li>
+      </ol>
+    </nav>
     <h1>{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="post-deck">{{ page.description | strip_html | normalize_whitespace }}</p>
+    {% endif %}
     <div class="post-meta">
+      <span>{{ site.author.name }}</span>
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
       {% if page.read_time %}<span>{{ page.read_time }}</span>{% endif %}
-      {% if page.tags %}
-        {% for tag in page.tags %}
-          <span class="tag">{{ tag }}</span>
-        {% endfor %}
-      {% endif %}
     </div>
   </header>
 
@@ -31,13 +37,11 @@ layout: default
 
   {% if page.image %}
   <figure class="post-hero">
-    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" loading="eager">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | strip_html | normalize_whitespace | escape }}" loading="eager" fetchpriority="high" style="view-transition-name: cover-{{ page.slug }}">
+    {% if page.image_credit %}
+    <figcaption>{{ page.image_credit }}</figcaption>
+    {% endif %}
   </figure>
-  {% if page.image_credit %}
-  <p class="post-meta" style="margin-top:-1.25rem;margin-bottom:2rem;">
-    {{ page.image_credit }}
-  </p>
-  {% endif %}
   {% endif %}
 
   <div class="prose">
@@ -51,4 +55,37 @@ layout: default
     <a href="{{ page.external_url }}" target="_blank" rel="noopener noreferrer">{{ page.external_url }}</a>
   </aside>
   {% endif %}
+
+  <footer class="post-footer">
+    <ul class="post-tags" aria-label="Tags">
+      {% for tag in page.tags %}
+      <li class="chip">{{ tag }}</li>
+      {% endfor %}
+      {% if page.markdown_url %}
+      <li><a class="text-link" href="{{ page.markdown_url | relative_url }}">read as markdown →</a></li>
+      {% endif %}
+    </ul>
+
+    <div class="author-card">
+      <img src="{{ '/assets/img/prof_pic-400.jpg' | relative_url }}" alt="" width="400" height="400" loading="lazy" decoding="async">
+      <p class="author-card__name">{{ site.author.name }}</p>
+      <p class="author-card__bio">
+        {{ site.author.role }} at <a href="{{ site.author.company_url }}" target="_blank" rel="noopener noreferrer">{{ site.author.company }}</a>.
+        <a href="{{ '/about/' | relative_url }}">About</a> ·
+        <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
+        <a href="{{ site.author.x }}" target="_blank" rel="noopener noreferrer">X</a>
+      </p>
+    </div>
+
+    {% if page.previous or page.next %}
+    <nav class="post-nav" aria-label="More posts">
+      {% if page.previous %}
+      <a href="{{ page.previous.url | relative_url }}"><span>← Older</span>{{ page.previous.title }}</a>
+      {% endif %}
+      {% if page.next %}
+      <a class="post-nav__next" href="{{ page.next.url | relative_url }}"><span>Newer →</span>{{ page.next.title }}</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </footer>
 </article>

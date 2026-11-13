@@ -1,24 +1,22 @@
 <header class="site-header">
   <div class="wrap wrap--wide nav">
-    <a class="nav-brand" href="{{ '/' | relative_url }}">
-      <img class="nav-brand__mark" src="{{ '/assets/img/logo-mark.svg' | relative_url }}" alt="" width="28" height="27">
+    <a class="nav-brand" href="{{ '/' | relative_url }}" aria-label="Daniel Alfasi, home">
+      <span class="nav-brand__mark" aria-hidden="true"></span>
       <span class="nav-brand__name">daniel alfasi</span>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
-      menu
-    </button>
-
-    <ul class="nav-links" id="site-nav">
-      <li>
-        <a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog' %}aria-current="page"{% endif %}>Blog</a>
-      </li>
-      <li>
-        <a href="{{ '/talks/' | relative_url }}" {% if page.url contains '/talks' %}aria-current="page"{% endif %}>Talks</a>
-      </li>
-      <li>
-        <a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about' %}aria-current="page"{% endif %}>About</a>
-      </li>
-    </ul>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li>
+          <a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog' %}aria-current="page"{% endif %}>Blog</a>
+        </li>
+        <li>
+          <a href="{{ '/talks/' | relative_url }}" {% if page.url contains '/talks' %}aria-current="page"{% endif %}>Talks</a>
+        </li>
+        <li>
+          <a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about' %}aria-current="page"{% endif %}>About</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>

@@ -94,6 +94,10 @@ module AgentMarkdown
       "- [X](#{author["x"]})",
       "- [Google Scholar](#{author["scholar"]})",
       "",
+      "## Highlights",
+      "",
+      (site.data["highlights"] || []).map { |item| "- **#{item["label"]}**: [#{item["text"]}](#{markdown_path(item["url"])})" },
+      "",
       "## Research that ships",
       "",
       posts.first(2).map { |post| post_item(post) },
@@ -164,6 +168,8 @@ module AgentMarkdown
     lines << "## Optional"
     lines << "- [AGENTS.md](#{absolute(site, "/AGENTS.md")}): How agents should fetch, cite, and attribute this site."
     lines << "- [Sitemap](#{absolute(site, "/sitemap.md")}): Site hierarchy with last-updated dates."
+    lines << "- [JSON Feed](#{absolute(site, "/feed.json")}): Posts newest first, with full content and markdown URLs."
+    lines << "- [Atom feed](#{absolute(site, "/feed.xml")}): Posts newest first."
     "#{lines.join("\n")}\n"
   end
 
@@ -247,6 +253,12 @@ module AgentMarkdown
         one response — use it instead of crawling.
       - **cite:** In answers, link the `canonical_url` from front matter (the HTML
         permalink), not the `.md` twin.
+      - **feeds:** [`/feed.json`](#{origin}/feed.json) (JSON Feed, each item carries a
+        `_markdown_url`) and [`/feed.xml`](#{origin}/feed.xml) (Atom) list posts
+        newest first. Poll these for new writing instead of re-crawling.
+      - **in-browser agents:** Where the browser supports
+        [WebMCP](https://webmachinelearning.github.io/webmcp/), pages register two
+        read-only tools: `list_posts` and `get_page_markdown`.
       - **requests:** Start with `/AGENTS.md` + `/llms.txt`. Then fetch only the pages
         you need. Do not scrape `/assets/` except for a PDF or image a page already
         links. Do not request source-control, build, or agent-guideline files.
@@ -321,6 +333,8 @@ module AgentMarkdown
     lines << "- [llms-full.txt](/llms-full.txt): Full markdown dump."
     lines << "- [sitemap.xml](/sitemap.xml): URL list for the HTML pages."
     lines << "- [sitemap-agents.xml](/sitemap-agents.xml): URL list for the markdown twins and agent files."
+    lines << "- [feed.json](/feed.json): JSON Feed of posts, newest first."
+    lines << "- [feed.xml](/feed.xml): Atom feed of posts, newest first."
     "#{lines.join("\n")}\n"
   end
 

@@ -1,0 +1,7 @@
+{%- comment -%} One row in a post list. Params: post, heading (h2|h3), date_format. {%- endcomment -%}
+<li class="post-list__item">
+  <time class="post-list__date" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: include.date_format }}</time>
+  <{{ include.heading }} class="post-list__title"><a class="card-link" href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></{{ include.heading }}>
+  <p class="post-list__desc">{{ include.post.description | strip_html | normalize_whitespace | truncate: 190 }}</p>
+  <p class="post-list__meta"><span class="tag">{{ include.post.category | default: "writing" }}</span>{% if include.post.read_time %} · {{ include.post.read_time }}{% endif %}{% if include.post.talk %} · {{ include.post.talk.event }}{% endif %}</p>
+</li>

@@ -5,6 +5,9 @@ description: >-
   and research that ships as detection.
 url: "https://danielalfasi.com"
 baseurl: ""
+lang: en
+locale: en_US
+social_image: /assets/img/og-default.png
 
 author:
   name: Daniel Alfasi
@@ -14,7 +17,16 @@ author:
   location: Tel Aviv, Israel
   linkedin: https://www.linkedin.com/in/daniel-alfasi/
   x: https://x.com/alfasiii
+  x_handle: alfasiii
   scholar: https://scholar.google.com/citations?user=uxuvP0gAAAAJ
+  topics:
+    - agentic AI security
+    - AI red teaming
+    - prompt injection
+    - LLM application security
+    - coding agent security
+    - knowledge graphs
+    - graph neural networks
 
 markdown: kramdown
 kramdown:
@@ -25,7 +37,6 @@ kramdown:
 permalink: /blog/:title/
 
 plugins:
-  - jekyll-seo-tag
   - jekyll-sitemap
 
 exclude:
@@ -40,6 +51,8 @@ exclude:
   - .jekyll-cache
   - .grok
   - _preview
+  - .agents
+  - skills-lock.json
 
 defaults:
   - scope:

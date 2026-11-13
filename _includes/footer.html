@@ -1,9 +1,35 @@
 <footer class="site-footer">
   <div class="wrap wrap--wide footer-inner">
-    <p class="footer-copy">// research → detection → product</p>
-    <ul class="footer-links">
-      <li><a href="{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer">linkedin</a></li>
-      <li><a href="{{ site.author.scholar }}" target="_blank" rel="noopener noreferrer">scholar</a></li>
-    </ul>
+    <div class="footer-about">
+      <p class="footer-copy">// research → detection → product</p>
+      <p>{{ site.author.name }}, {{ site.author.role }} at {{ site.author.company }}. Agentic AI security, red teaming, and research that ships as detection.</p>
+      <p class="footer-copy">© {{ site.time | date: "%Y" }} {{ site.author.name }}</p>
+    </div>
+    <nav class="footer-col" aria-label="Site">
+      <h2>Site</h2>
+      <ul>
+        <li><a href="{{ '/blog/' | relative_url }}">blog</a></li>
+        <li><a href="{{ '/talks/' | relative_url }}">talks &amp; papers</a></li>
+        <li><a href="{{ '/about/' | relative_url }}">about</a></li>
+        <li><a href="{{ '/feed.xml' | relative_url }}">rss</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Elsewhere">
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="{{ site.author.linkedin }}" target="_blank" rel="me noopener noreferrer">linkedin</a></li>
+        <li><a href="{{ site.author.x }}" target="_blank" rel="me noopener noreferrer">x</a></li>
+        <li><a href="{{ site.author.scholar }}" target="_blank" rel="me noopener noreferrer">scholar</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="For agents">
+      <h2>For agents</h2>
+      <ul>
+        <li><a href="{{ '/llms.txt' | relative_url }}">llms.txt</a></li>
+        <li><a href="{{ '/AGENTS.md' | relative_url }}">AGENTS.md</a></li>
+        {% if page.markdown_url %}<li><a href="{{ page.markdown_url | relative_url }}">this page as markdown</a></li>{% endif %}
+        <li><a href="{{ '/feed.json' | relative_url }}">json feed</a></li>
+      </ul>
+    </nav>
   </div>
 </footer>
