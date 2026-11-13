@@ -24,7 +24,7 @@ Before Reco I spent several years at **CyberArk** as a data scientist and senior
 
 I hold an MSc in Computer Science from Reichman University (knowledge graphs and LLMs; work that led to VulnScopper at CoNEXT GNNet 2024) and a BSc in Computer Science from Ariel University.
 
-I've contributed to the **OWASP AI Vulnerability Scoring System (AIVSS)** and the **OWASP Top 10 for Agentic Skills**.
+I've contributed to the **OWASP Top 10 for Agentic Skills**.
 
 ### Elsewhere
 

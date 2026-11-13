@@ -3,7 +3,7 @@
   text: "Two talks: GROPUS and Off With Their Labels"
   url: /talks/
 - label: OWASP
-  text: Contributor to the Agentic Skills Top 10 and AIVSS
+  text: Contributor to the Agentic Skills Top 10
   url: /blog/owasp-agentic-skills-top-10/
 - label: ACM CoNEXT 2024
   text: "VulnScopper: knowledge graphs and LLMs for CVE enrichment"
