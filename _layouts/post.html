@@ -16,6 +16,19 @@ layout: default
     </div>
   </header>
 
+  {% if page.talk %}
+  {% assign talk = page.talk %}
+  <aside class="talk-banner">
+    <p class="talk-banner__label">from the stage</p>
+    <p class="talk-banner__text">
+      Written version of the talk at
+      {% if talk.event_url %}<a href="{{ talk.event_url }}" target="_blank" rel="noopener noreferrer">{{ talk.event }}</a>{% else %}{{ talk.event }}{% endif %}
+      <span class="talk-banner__meta">{{ talk.date | date: "%b %-d, %Y" }}{% if talk.venue %} · {{ talk.venue }}{% endif %}{% if talk.with %} · with {{ talk.with }}{% endif %}</span>
+    </p>
+    <a class="talk-banner__more" href="{{ '/talks/' | relative_url }}">all talks →</a>
+  </aside>
+  {% endif %}
+
   {% if page.image %}
   <figure class="post-hero">
     <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" loading="eager">
